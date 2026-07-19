@@ -29,7 +29,7 @@ Ambos arquivos `index.php` e `upload.php` realizam requisições javascript por 
 <p align="center"> <img src="figs/url_fetch.png" alt="diagrama" width="100%"></p>
 <p align="center"><b>Endereço da requisição http</b></p>
 
-<p align="center"> <img src="figs/Fluxograma.png" alt="diagrama" width="500"></p>
+<p align="center"> <img src="figs/fluxograma.png" alt="diagrama" width="500"></p>
 <p align="center"><b>Fluxograma do website</b></p>
 <br><br>
 
