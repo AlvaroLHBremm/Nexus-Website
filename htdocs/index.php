@@ -1,3 +1,5 @@
+<?php $data = 2; ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
