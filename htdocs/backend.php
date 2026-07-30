@@ -28,34 +28,7 @@
 
         public function __construct(Connection $connection){
             $this->connection = $connection->connectDB();
-        }
-        public function createTable(){
-            $query = "CREATE DATABASE if0_41646299_datacom_2026_1;
-            
-					CREATE TABLE profinet_protocol (
-                        id           TINYINT NOT NULL PRIMARY KEY DEFAULT 1,
-                        estado       VARCHAR(50),
-                        habilitar    BOOLEAN NOT NULL DEFAULT FALSE,
-                        resetar      BOOLEAN NOT NULL DEFAULT FALSE,
-                        frequencia   INT NOT NULL DEFAULT 0,
-                        last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,                        
-                    );
-                    CREATE TABLE CAN_PROTOCOL (
-                        id        TINYINT NOT NULL PRIMARY KEY DEFAULT 1,
-                        velocity INT NOT NULL DEFAULT 0,
-                        gear     INT NOT NULL DEFAULT 0,
-                        error    INT NOT NULL DEFAULT 0,
-                        last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,                        
-                    );
-                    CREATE TABLE MQTT_PROTOCOL (
-                        id          TINYINT NOT NULL PRIMARY KEY DEFAULT 1,
-                        temperatura VARCHAR(32),
-                        estado      VARCHAR(32),
-                        last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,                        
-                    );                    
-                    INSERT INTO can_protocol (id,velocity, gear, error) VALUES (0,0, 0, 0);
-            ";
-        }
+        }      
 
         //----------------------[SET SENSOR DATA]----------------------//
         public function SET_PROFINET_DATA($data){
