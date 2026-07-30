@@ -7,8 +7,7 @@
         $DataBase   = new Database($Connection);
 
         $json = file_get_contents("php://input");
-        $data = json_decode($json, true);
-        
+        $data = json_decode($json, true);       
 
 
         if ($data === null) {
@@ -35,12 +34,14 @@
                 ]);
                 break;
             case "set_data":
-                $success = false;
-                                
-                if($DataBase->SET_PROFINET_DATA($data["profinet"]) && $DataBase->SET_MQTT_DATA($data["mqtt"]) && $DataBase->SET_CAN_DATA($data["can"])){
-                    $success = true;
-                }                
-
+                                                                
+                if ($data["senha"] !== "teste123") {
+                    send_json(403, [
+                        "ok" => false,
+                        "error" => "Wrong password."
+                    ]);
+                }
+				$success = $DataBase->SET_PROFINET_DATA($data["profinet"]) && $DataBase->SET_MQTT_DATA($data["mqtt"]) && $DataBase->SET_CAN_DATA($data["can"]);	
                 echo json_encode([
                     "ok" => true,
                     "message" => $success ? "Data updated" : "Data ERROR"

@@ -10,7 +10,7 @@
    	 	<link rel="stylesheet" type="text/css" href="estilo.css">
 
    	 	<!-- Script js -->
-   	 	<!-- <script src="my_script.js" defer></script> -->
+   	 	<script type="module" src="set_data.js" defer></script>
 	</head>
 	<body>
         <header class="d-flex f-row align-c">
@@ -84,127 +84,8 @@
                     </div>
                 </div>  
             </div>
-        </div>
-		
+        </div>		
 	</body>
-
-    <script>
-		const PROTOCOL_TAG = ["PROFINET","MQTT","CAN"];
-        function toggleLED(state){
-            for(let i = 1; i < 4; i++){
-                document.getElementById(`sensor_${i}` ).classList.toggle(state);
-            }
-        };
-		function toggleFetchError(PROTOCOL){
-            document.getElementById(`operator_${PROTOCOL}`).classList.remove('sensorON');
-            document.getElementById(`${PROTOCOL}_state`).style.color = "red";
-            document.getElementById(`${PROTOCOL}_state`).innerHTML   = "offline" ;
-        }
-		function toggleFetchSuccess(PROTOCOL, data){            
-            if(data[PROTOCOL].online == false){ 
-                toggleFetchError(PROTOCOL);
-                return ;
-            }
-            document.getElementById(`operator_${PROTOCOL}`).classList.add('sensorON');
-            document.getElementById(`${PROTOCOL}_state`).style.color = "#26C755";
-            document.getElementById(`${PROTOCOL}_state`).innerHTML   = "online" ;
-        }
-        
-		var i = 0;
-        FETCH_DATA();
-        async function FETCH_DATA(){
-            const NODE_IP = "127.0.0.1";
-            const NODE_URL = `http://${NODE_IP}:1880/api/state`;   
-                     
-            try{                
-                const response = await fetch(NODE_URL);                               
-                const data = await response.json();                
-                console.log(++i, data);        
-                
-                displayDATA(data);
-                SET_DATA(data);
-
-                toggleLED("sensorUpdate");
-                setTimeout(() => { toggleLED("sensorUpdate"); }, 200);  
-                if(data.PROFINET.online == true) {toggleFetchSuccess("PROFINET", data)} else {toggleFetchError("PROFINET")}             
-                if(data.MQTT.online     == true) {toggleFetchSuccess("MQTT"    , data)} else {toggleFetchError("MQTT"    )}  
-                if(data.CAN.online      == true) {toggleFetchSuccess("CAN"     , data)} else {toggleFetchError("CAN"     )}  
-            
-                
-            } catch(error) { 
-                console.error("Fetch failed:", error.message);            
-
-                toggleLED("sensorError");
-                setTimeout(() => { toggleLED("sensorError"); }, 200);
-                toggleFetchError("PROFINET");
-                toggleFetchError("MQTT"    );
-                toggleFetchError("CAN"     );   
-            }
-            setTimeout(() => {FETCH_DATA()}, 3000);
-        }
-
-        function displayDATA(DATA){                
-			//---------------------[ PROFINET Protocol   ]---------------------//
-            if(DATA.PROFINET.online == true){
-                document.getElementById("PROFINET_estado"    ).innerHTML = DATA.PROFINET.estado    ? "Ligado"     : "Desligado"   ;
-                document.getElementById("PROFINET_habilitar" ).innerHTML = DATA.PROFINET.habilitar ? "Habilitado" : "Desabilitado";
-                document.getElementById("PROFINET_reset"     ).innerHTML = DATA.PROFINET.resetar   ? "Resetar"    : "---"         ;
-                document.getElementById("PROFINET_frequencia").innerHTML = `${DATA.PROFINET.frequencia} KHz`;   
-            }          
-            //---------------------[ MQTT     Protocol   ]---------------------//
-            if(DATA.MQTT.online == true){
-                document.getElementById("MQTT_temperatura"   ).innerHTML = DATA.MQTT.estado;
-                document.getElementById("MQTT_estado"        ).innerHTML = DATA.MQTT.temperatura;
-            }
-            if(DATA.CAN.online == true){
-            //---------------------[ CAN      Protocol   ]---------------------//   
-                let NDR = ['N','D','R'];
-                document.getElementById("CAN_velocity"       ).innerHTML = `${(DATA.CAN.velocidade*0.1).toFixed(1)} km`;
-                document.getElementById("CAN_gear"           ).innerHTML = NDR[DATA.CAN.marcha];
-                document.getElementById("CAN_error"          ).innerHTML = DATA.CAN.erro;         
-            }
-        }
-
-        async function SET_DATA(data) {
-            try {
-                const response = await fetch("controller.php", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        action: "set_data",
-                        profinet: {
-                            online:     data.PROFINET.online,
-                            estado:     data.PROFINET.estado,
-                            habilitar:  data.PROFINET.habilitar,
-                            resetar:    data.PROFINET.resetar,
-                            frequencia: data.PROFINET.frequencia
-                        },
-                        mqtt: {
-                            online:      data.MQTT.online,
-                            temperatura: data.MQTT.temperatura,
-                            estado:      data.MQTT.estado
-                        },
-                        can: {
-                            online:     data.CAN.online,
-                            velocidade: data.CAN.velocidade,
-                            marcha:     data.CAN.marcha,
-                            erro:       data.CAN.erro
-                        }
-                    })
-                });                   
-                     
-                if (!response.ok) {
-                    throw new Error(`Server error: ${response.status}`);
-                }
-                const data2 = await response.json(); // Or response.text() if backend doesn't return JSON
-                
-            } catch (error) {
-                console.error("Fetch failed:", error);
-            }
-        }
-    </script>
 </html>
 
 

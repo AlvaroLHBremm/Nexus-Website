@@ -11,10 +11,11 @@ body{
 
 
 /*   ATOMIC CLASSES   */
+.h-43  {height: 43%;  }
 .h-50  {height: 50%;  }
 .h-100 {height: 100%; }
 .d-flex{display: flex;}
-.d-grid{display: flex;}
+.d-grid{display: grid;}
 .f-row {flex-direction: row;     }
 .f-col {flex-direction: column;  }
 .align-c  {align-items: center;  }
@@ -74,7 +75,7 @@ header{
     border: 1px solid rgba(128, 128, 128, 0);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.281);
 	font-family: "Oxanium-ExtraLight";
-    background: url(imagens/loading.gif) 20px 50px / 90px 30px no-repeat;
+    background: url(imagens/loading.gif) 20px 20px / 90px 90px no-repeat;
 	transition: all 0.2s;
  
 }.operators:hover{
@@ -98,7 +99,7 @@ header{
 
 .sensor{
     background: url(imagens/LED_OFF.png) calc(100% - 10px) 10px / 40px  40px  no-repeat;
-    border-bottom: 2px solid rgb(185, 185, 185);
+    border-bottom: 1px solid rgb(185, 185, 185);
     border-radius: 20px 20px 0 0;
     transition: all 0.1s;
 }
@@ -113,7 +114,7 @@ header{
 
 .Display_data{
     border: 1px solid gray;
-    background-color: #D0D0D0;
+    background-color: #E0E0E0;
     border-radius: 20px;
     width: 70%;
     height: 90%;
@@ -129,6 +130,18 @@ header{
     margin: 10px;
 }.ON{background: rgb(92, 131, 204) url(imagens/switch.png) 27px center / 18px 18px no-repeat;}
 
+.graph_bg{
+    border: 1px solid gray;
+    background-color: #E0E0E0;
+    border-radius: 20px;
+}
+.graph{
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 20px;
+    background-color: white;
+    height: 300px;
+    width: 400px;
+}
 
 
 @media (max-width: 1080px) {
