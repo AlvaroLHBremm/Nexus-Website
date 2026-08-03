@@ -8,7 +8,7 @@
 
 ## 1	Descrição do projeto
 
-Durante a disciplina `Comunicação de Dados` (https://github.com/MatheusPinto/Project_Nexus )foi desenvolvido o projeto entitulado `Nexus` o qual consistia de 3 células comunicando-se com sensores e atuadores através de protocolos de comunicação Industriais como MQTT, CAn e Profinet. Afim de disponibilizar amplamente os dados do projeto sem depender de um dashboard Node-RED local foi construído um website capaz de requisitar os dados localmente para a porta de onde o `Node-RED` central está rodando, salvá-los em um banco de dados e disponibilizá-los em um website para qualquer indivíduo que acesse o domínio na internet, seja pelo computador ou pelo celular.
+Este website foi desenvolvido durante a disciplina `Comunicação de Dados`  para o Projeto Nexus (https://github.com/MatheusPinto/Project_Nexus ). Projeto o qual consistia de "" foi desenvolvido o projeto entitulado `Nexus` o qual consistia de 3 células comunicando-se com sensores e atuadores através de protocolos de comunicação Industriais como MQTT, CAn e Profinet. Afim de disponibilizar amplamente os dados do projeto sem depender de um dashboard Node-RED local foi construído um website capaz de requisitar os dados localmente para a porta de onde o `Node-RED` central está rodando, salvá-los em um banco de dados e disponibilizá-los em um website para qualquer indivíduo que acesse o domínio na internet, seja pelo computador ou pelo celular.
 
 <p align="center"> <img src="figs/websiteV2.png" alt="diagrama" width="100%"></p>
 <p align="center"><b>Website</b></p>
