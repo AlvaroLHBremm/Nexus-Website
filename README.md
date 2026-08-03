@@ -282,49 +282,6 @@ A CORS (Cross Origin Resource Sharing) é um mecanismo de segurança do browser 
   </tr>
 </table>
 
-## 5	configurações para futuros semestres
-
-Este website é uma solução simples para um problema que tende a uma alta complexidade na industria de software, isto é, devido a situação academica do projeto não haverá muitos usuarios se não aqueles que estão ativamente coordenando ou desenvolvendo o projeto, não há segurança pois não há usuarios maliciosos, diversos problemas que ocorrem com baixa frequencia foram descartados ou adiados. Foi realizado esforço para lidar com diversas adversidades, desde o banco de dados do host não responder até ao website `index.php` que muda icones, textos e audios quando um protocolo desconecta. e cujas funções podem vir a serem transcritos a pagina `upload.php`.
-
-Como o website está situado em um servidor de uma conta privada de um aluno, a existencia futura do website e do dominio é incerta. Para utilizar e dar continuidade a está raiz do projeto será necessario criar um novo website. para isto você poderá utilizar o mesmo host de website utilizado neste projeto, o InfinityFree. Após criar uma nova conta e escolher um nome para o dominio você terá um novo website e pderá acessar a pagina de configuração.
-
-<p align="center"> <img src="figs/config_page.png" alt="Fluxograma" width="100%"></p>
-<p align="center"><b>Pagina de configuração</b></p>
-
-### Descrição geral dos arquivos
-Resumo geral dos arquivos e suas funcionalidades.
-
-| opção | Descrição |
-| :---: | :--- |
-| `Overview` | Dados gerais do website. |
-| `file manager` | local para armazenar e atualizar os arquivos do website dentro da pasta `htdocs`. |
-| `MySQL Databases` | Gerenciador de banco de dados MySQL onde seus dados serão criados/atualizados. |
-| `resource Usage` | Aba de uso de recursos do website. Cuidado para não ultrapassar os 50000 hits, que significa requisitar os **arquivos** ao host, Atualizar o website não requisita os arquivos novamente mas CTRL + F5 e abri-lo em uma nova aba requisitam. |
-| `Control Panel` | Configurações gerais do website. |
-
-### Banco de dados
-Será necessario criar e acessar o banco de dados em seu novo website. No arquivo `backend.php` existe a classe `Connection` responsavel por realisar a conexão ao banco de dados, ele utiliza os parametros host, dbname, user e password que são auto explicativos. O desenvolvedor deverá colocar os dados do seu banco de dados no arquivo para que a comunicação com a "nuvem" aconteça.
-
-<p align="center"> <img src="figs/connection.png" alt="" width="100%"></p>
-<p align="center"><b>Conexão de banco de dados</b></p>
-<br><br>
-
-Esses dados são obtidos na aba `MySQL Databases` apresentadas na tabela logo acima.
-
-<p align="center"> <img src="figs/database_details.png" alt="Fluxograma" width="100%"></p>
-<p align="center"><b>Detalhes da base de dados</b></p>
-<br><br>
-
-Com Esses parametros configurados você poderá acessar o banco de dados a partir do website e configurar tabela e coluna necessarias para o projeto. Se a necessidade de projetos futuros fortem similares ao do website deste semestre, 2026/1, é possivel importar as configurações do banco de dados pelo MyPHPadmin utilizando o arquivo `database_export.sql`.
-
-Uma possivel alteração futura para esta raiz do projeto seria tornar o website completamente independente do Node central, de modo que o Node, ou um segundo website local, envie e receba  requisições através de IP's ou dominios, realizando uma troca de dados mais dinamica com o website. Esta topologia não é melhor ou pior, deve ser levado em conta as necessidades gerais do projeto.
-
-Não houve tempo para checar se o protocolo está online no flow do Node-RED central e salva-lo no objeto que vai para o Website. Contudo, o website é versátil neste quesito e sinaliza através de icones, texto, cores e até sinal de audio, quando o botão estiver ativo, para retratar visualmente o estado da conexão do protocolo. Contudo, esse não foi um problema demasiado grande pois se tudo estiver funcionando raramente haverá a necessidade desta verificação ocorrer. Mas que fique documentado e em mente para proximo semestres que está opção já está programada no site (index.php), só requer que o Node-RED central atualize o estado online do protocolo.
-
-
-
-
-
 
 
 
