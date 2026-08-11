@@ -3,6 +3,9 @@
 [![Protocolo](https://img.shields.io/badge/Website-Nexus-green.svg)](https://www.iso.org/standard/63648.html)
 [![Controlador](https://img.shields.io/badge/Frontend-HTML/CSS/Javascript-orange.svg)](#)
 [![Controlador](https://img.shields.io/badge/Backend-PHP/MySQL-purple.svg)](#)
+<div style="padding: 0;">
+    <img src="https://skillicons.dev/icons?i=html,css,js,php,mysql,nodejs" height="50px"/>
+</div>
 
 ---
 
