@@ -26,9 +26,9 @@ O website possui duas paginas, a pagina de visualização e a de upload de dados
 . de uma certa forma, contornado através de uma função que escuta pela mudança do estado `"visibilitychange"`, assim quando a aba do website não estiver em foco as requisções são cessadas até que o usuario volte ao website e as requisições retornam a ser realizadas.
 
 
-
+<!--
 A segunda entrada é a de upload de dados. Através de um sistema de armazernamento similar ao de diretorios é possivel acessar diferentes arquivos dentro da pasta `htdocs` (Hyper Text Documents) através da URL, pasta que contem todos os arquivos de seu website. Portanto selecionando a URL + `/arquivo`, podemos entrar na pagina de upload de dados ao banco de dados do servidor. O arquivo `/upload.php` tamém possui códigos html e javascript, e o código javascript realiza requisições periodicamente, através de uma função setInterval() dentro da função set_data(), HTTP ao IP de loopback `127.0.0.1`, conhecido como localhost, o qual é o endereço do próprio computador, e salva o objeto JSON no banco de dados se ele for retornado. Deste modo é possível fazer requisições as portas do próprio computador em que o website for acessado e acessar a porta 1880, porta padrão por onde o Node-RED estará rodando e disponibilizando os dados em tempo real. Se o Node-RED vir a fechar, travar ou reiniciar, o Node sempre realizará um "ultimo suspiro" e retornará o objeto padrão com todos os campos zerados ou falso. O IP `127.0.0.1`, porta `1880` e diretorio `/api/state` podem vir a ser mudados a depender das necessidades do projetista. A sincronização ocorre somente enquanto a página upload.php estiver aberta no mesmo computador que executa o Node-RED. Diferentemente de index.php, essa página não interrompe intencionalmente as requisições quando a aba perde o foco, permitindo que o desenvolvedor utilize outras abas enquanto os dados continuam sendo enviados ao banco. Entretanto, o navegador pode reduzir a frequência de execução dos temporizadores em abas que permanecem em segundo plano, de modo que a periodicidade configurada não é garantida nessas condições.
-
+-->
 
 
 <p align="center"> <img src="figs/url_fetch.png" alt="diagrama" width="100%"></p>
