@@ -1,16 +1,11 @@
-# Nexus - Website
-
-[![Protocolo](https://img.shields.io/badge/Website-Nexus-green.svg)](https://www.iso.org/standard/63648.html)
-[![Controlador](https://img.shields.io/badge/Frontend-HTML/CSS/Javascript-orange.svg)](#)
-[![Controlador](https://img.shields.io/badge/Backend-PHP/MySQL-purple.svg)](#)
-<div style="padding: 0;">
-    <img src="https://skillicons.dev/icons?i=html,css,js,php,mysql,nodejs" height="50px"/>
-</div>
-
 # Nexus — Website
 
 ![Frontend](https://img.shields.io/badge/Frontend-HTML%20%7C%20CSS%20%7C%20JavaScript-orange)
 ![Backend](https://img.shields.io/badge/Backend-PHP%20%7C%20MySQL-purple)
+
+<div style="padding: 0;">
+    <img src="https://skillicons.dev/icons?i=html,css,js,php,mysql,nodejs" height="50px"/>
+</div>
 
 Este repositório contém a **continuação e evolução pessoal do website desenvolvido para o Projeto Nexus**, originalmente criado durante a disciplina de Comunicação de Dados do curso de Eletrônica Industrial.
 
