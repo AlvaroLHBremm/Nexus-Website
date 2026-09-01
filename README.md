@@ -13,8 +13,10 @@
 
 construção coletiva de um sistema de automação heterogêneo: três duplas, três protocolos distintos, uma única rede integrada.
 
-O website foi desenvolvido para o Projeto Nexus (https://github.com/MatheusPinto/Project_Nexus ) durante a disciplina `Comunicação de Dados`. O projeto consiste em construir um sistema coletivo de automação industrial com 3 células, cada uma gerenciando um sensor e atuador através de protocolos de comunicação industriais, como os tuilizados neste projeto: Profinet, CAN e MQTT. O website foi desenvolvido como um recurso extra afim de disponibilizar amplamente os dados do projeto sem depender de um dashboard Node-RED local, para isto foi construído uma vertente do website capaz de requisitar os dados localmente para a porta de onde o `Node-RED` central está rodando, salvá-los em um banco de dados e disponibilizá-los em um website para qualquer indivíduo que acesse o domínio na internet, seja pelo computador ou pelo celular.
+O website foi desenvolvido para o [Projeto Nexus](https://github.com/MatheusPinto/Project_Nexus) durante a disciplina `Comunicação de Dados`. O projeto consiste em construir um sistema coletivo de automação industrial com 3 células, cada uma gerenciando um sensor e atuador através de protocolos de comunicação industriais, como os tuilizados neste projeto: Profinet, CAN e MQTT. O website foi desenvolvido como um recurso extra afim de disponibilizar amplamente os dados do projeto sem depender de um dashboard Node-RED local, para isto foi construído uma vertente do website capaz de requisitar os dados localmente para a porta de onde o `Node-RED` central está rodando, salvá-los em um banco de dados e disponibilizá-los em um website para qualquer indivíduo que acesse o domínio na internet, seja pelo computador ou pelo celular.
 
+
+Seção do projeto do website: [Clique aqui](https://github.com/MatheusPinto/Project_Nexus/tree/main/nexus-web)
 <p align="center"> <img src="figs/websiteV2.png" alt="diagrama" width="100%"></p>
 <p align="center"><b>Website</b></p>
 <br><br>
