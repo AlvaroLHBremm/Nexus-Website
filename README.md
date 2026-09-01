@@ -7,7 +7,7 @@
     <img src="https://skillicons.dev/icons?i=html,css,js,php,mysql,nodejs" height="50px"/>
 </div><br>
 
-Este repositório contém a **continuação e evolução pessoal do website desenvolvido para o Projeto Nexus**, originalmente criado durante a disciplina de Comunicação de Dados do curso de Eletrônica Industrial.
+Este repositório contém a **continuação e evolução pessoal do website desenvolvido para o Projeto Nexus**, originalmente criado durante a disciplina de `Comunicação de Dados` do curso de Eletrônica Industrial.
 
 O Projeto Nexus consiste em um sistema de automação distribuído composto por três células utilizando diferentes protocolos de comunicação: **PROFINET, CAN e MQTT**. O website foi desenvolvido como uma interface externa para monitoramento dos dados do sistema através da internet.
 
@@ -20,14 +20,14 @@ Após a conclusão do projeto acadêmico, o desenvolvimento do website continuou
 Entre as funcionalidades posteriormente desenvolvidas estão:
 
 - monitoramento dos estados dos protocolos PROFINET, CAN e MQTT;
-- identificação da disponibilidade dos protocolos através do último dado recebido;
-- atualização periódica das informações apresentadas no dashboard;
-- gráficos em tempo real desenvolvidos diretamente com a API `<canvas>` do HTML;
-- ajuste automático da escala dos gráficos de acordo com os valores recebidos;
-- armazenamento de um histórico limitado de amostras para visualização;
-- suporte a valores positivos, negativos e diferentes ordens de grandeza;
-- interface adaptada para computadores e dispositivos móveis;
-- integração entre frontend, PHP, MySQL e Node-RED.
+- Identificação da disponibilidade dos protocolos através do último dado recebido;
+- Atualização periódica das informações apresentadas no dashboard;
+- Gráficos em tempo real desenvolvidos diretamente com a API `<canvas>` do HTML;
+- Ajuste automático da escala dos gráficos de acordo com os valores recebidos;
+- Armazenamento de um histórico limitado de amostras para visualização;
+- Suporte a valores positivos, negativos e diferentes ordens de grandeza;
+- Interface adaptada para computadores e dispositivos móveis;
+- Integração entre frontend, PHP, MySQL e Node-RED.
 
 <p align="center">
   <img src="figs/websiteV2.png" alt="Dashboard Nexus" width="100%">
