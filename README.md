@@ -5,7 +5,7 @@
 
 <div style="padding: 0;">
     <img src="https://skillicons.dev/icons?i=html,css,js,php,mysql,nodejs" height="50px"/>
-</div>
+</div><br>
 
 Este repositório contém a **continuação e evolução pessoal do website desenvolvido para o Projeto Nexus**, originalmente criado durante a disciplina de Comunicação de Dados do curso de Eletrônica Industrial.
 
