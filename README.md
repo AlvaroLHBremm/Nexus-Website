@@ -7,288 +7,58 @@
     <img src="https://skillicons.dev/icons?i=html,css,js,php,mysql,nodejs" height="50px"/>
 </div>
 
----
+# Nexus — Website
 
-## 1	Descrição do projeto
+![Frontend](https://img.shields.io/badge/Frontend-HTML%20%7C%20CSS%20%7C%20JavaScript-orange)
+![Backend](https://img.shields.io/badge/Backend-PHP%20%7C%20MySQL-purple)
 
-construção coletiva de um sistema de automação heterogêneo: três duplas, três protocolos distintos, uma única rede integrada.
+Este repositório contém a **continuação e evolução pessoal do website desenvolvido para o Projeto Nexus**, originalmente criado durante a disciplina de Comunicação de Dados do curso de Eletrônica Industrial.
 
-O website foi desenvolvido para o [Projeto Nexus](https://github.com/MatheusPinto/Project_Nexus) durante a disciplina `Comunicação de Dados`. O projeto consiste em construir um sistema coletivo de automação industrial com 3 células, cada uma gerenciando um sensor e atuador através de protocolos de comunicação industriais, como os tuilizados neste projeto: Profinet, CAN e MQTT. O website foi desenvolvido como um recurso extra afim de disponibilizar amplamente os dados do projeto sem depender de um dashboard Node-RED local, para isto foi construído uma vertente do website capaz de requisitar os dados localmente para a porta de onde o `Node-RED` central está rodando, salvá-los em um banco de dados e disponibilizá-los em um website para qualquer indivíduo que acesse o domínio na internet, seja pelo computador ou pelo celular.
+O Projeto Nexus consiste em um sistema de automação distribuído composto por três células utilizando diferentes protocolos de comunicação: **PROFINET, CAN e MQTT**. O website foi desenvolvido como uma interface externa para monitoramento dos dados do sistema através da internet.
 
+> A arquitetura, funcionamento e documentação do projeto acadêmico original estão disponíveis no [repositório do Projeto Nexus](https://github.com/MatheusPinto/Project_Nexus).
 
-Seção do projeto do website: [Clique aqui](https://github.com/MatheusPinto/Project_Nexus/tree/main/nexus-web)
-<p align="center"> <img src="figs/websiteV2.png" alt="diagrama" width="100%"></p>
-<p align="center"><b>Website</b></p>
-<br><br>
+## Evolução do website
 
-## 2	Funcionamento
+Após a conclusão do projeto acadêmico, o desenvolvimento do website continuou de forma independente, com foco na melhoria da interface, visualização dos dados e organização do código.
 
-O website possui duas paginas, a pagina de visualização e a de upload de dados. A pagina de visualização é aquela acessado pela url padrão, por exemplo exemplo: www.google.com. Enquanto a pagina de upload é acessada localmente através do sufixo "/upload.html", a necessidade de uma pagina que acessa o Node-RED localmente veio de uma  limitação do host Infinityfree, o qual não permite com facilidade a requisição de dados diretamente ao website como uma API, ele realiza um "cookie check" pare checar se a requisição vem de um browser ou de uma API automatizada. Para circunver esta limitação foi criado uma vertente do website que requisita os dados localmente, deste modo os "desafios" propostos pelo website seriam executados naturalmente pelo browser do navegador.****
+Entre as funcionalidades posteriormente desenvolvidas estão:
 
-. de uma certa forma, contornado através de uma função que escuta pela mudança do estado `"visibilitychange"`, assim quando a aba do website não estiver em foco as requisções são cessadas até que o usuario volte ao website e as requisições retornam a ser realizadas.
+- monitoramento dos estados dos protocolos PROFINET, CAN e MQTT;
+- identificação da disponibilidade dos protocolos através do último dado recebido;
+- atualização periódica das informações apresentadas no dashboard;
+- gráficos em tempo real desenvolvidos diretamente com a API `<canvas>` do HTML;
+- ajuste automático da escala dos gráficos de acordo com os valores recebidos;
+- armazenamento de um histórico limitado de amostras para visualização;
+- suporte a valores positivos, negativos e diferentes ordens de grandeza;
+- interface adaptada para computadores e dispositivos móveis;
+- integração entre frontend, PHP, MySQL e Node-RED.
 
+<p align="center">
+  <img src="figs/websiteV2.png" alt="Dashboard Nexus" width="100%">
+</p>
 
-<!--
-A segunda entrada é a de upload de dados. Através de um sistema de armazernamento similar ao de diretorios é possivel acessar diferentes arquivos dentro da pasta `htdocs` (Hyper Text Documents) através da URL, pasta que contem todos os arquivos de seu website. Portanto selecionando a URL + `/arquivo`, podemos entrar na pagina de upload de dados ao banco de dados do servidor. O arquivo `/upload.php` tamém possui códigos html e javascript, e o código javascript realiza requisições periodicamente, através de uma função setInterval() dentro da função set_data(), HTTP ao IP de loopback `127.0.0.1`, conhecido como localhost, o qual é o endereço do próprio computador, e salva o objeto JSON no banco de dados se ele for retornado. Deste modo é possível fazer requisições as portas do próprio computador em que o website for acessado e acessar a porta 1880, porta padrão por onde o Node-RED estará rodando e disponibilizando os dados em tempo real. Se o Node-RED vir a fechar, travar ou reiniciar, o Node sempre realizará um "ultimo suspiro" e retornará o objeto padrão com todos os campos zerados ou falso. O IP `127.0.0.1`, porta `1880` e diretorio `/api/state` podem vir a ser mudados a depender das necessidades do projetista. A sincronização ocorre somente enquanto a página upload.php estiver aberta no mesmo computador que executa o Node-RED. Diferentemente de index.php, essa página não interrompe intencionalmente as requisições quando a aba perde o foco, permitindo que o desenvolvedor utilize outras abas enquanto os dados continuam sendo enviados ao banco. Entretanto, o navegador pode reduzir a frequência de execução dos temporizadores em abas que permanecem em segundo plano, de modo que a periodicidade configurada não é garantida nessas condições.
--->
+## Gráficos em tempo real
 
-### Gráfico
+Os gráficos do dashboard foram implementados diretamente utilizando o elemento **HTML Canvas**, sem bibliotecas externas de visualização.
 
-Para melhorar a visualização dos dados em tempo real foi desenvolvido um gráfico com base no canvas, de modo que fique armazenado e visivel todos as ultimas dezenas de valores. O gráfico suporta diversos modos, se adequando a eles. como valores positivos e negativos, valores grandes são condensados e pequenos amplificados para manter-se em foco no grafico.
+As amostras recebidas são armazenadas temporariamente no navegador e utilizadas para atualizar os gráficos em tempo real. A escala vertical é calculada dinamicamente a partir dos dados armazenados, permitindo que o gráfico se adapte a diferentes amplitudes e também a valores positivos e negativos.
 
-<p align="center"> <img src="figs/fluxograma.png" alt="diagrama" width="500"></p>
-<p align="center"><b>Fluxograma do website</b></p>
-<br><br>
+Essa implementação foi desenvolvida como exercício de aprofundamento no funcionamento de sistemas de visualização de dados e manipulação gráfica com JavaScript.
 
-## 3	Estrutura de dados
+## Tecnologias
 
-### Estrutura de arquivos do Website
+- HTML
+- CSS
+- JavaScript
+- PHP
+- MySQL
+- Node-RED
 
-Resumo geral dos arquivos e suas funcionalidades.
+## Projeto original
 
-| Arquivo | Descrição |
-| :---: | :--- |
-| `index.php` | Disponibiliza um dashboard online através de requisições periodicas ao banco de dados do host. |
-| `upload.php` | Quando setado corretamente, fará o upload dos dados ao banco de dados do host. |
-| `controller.php` | Arquivo responsavel por gerenciar as ações ao banco de dados.  |
-| `backend.php` | Arquivo que contem classes responsaveis por conectar-se e realizar queries ao banco de dados. |
-| `estilo.css` | Arquivo responsavel por formatar a configuração estética HTML do website. |
-| `/imagens` | Pasta que contem as imagens, icones, gifs, audio, etc, utilizados pelo website. |
+Este website teve origem como parte de um projeto acadêmico coletivo. Para informações sobre a arquitetura completa do sistema, dispositivos utilizados e implementação dos protocolos de comunicação, consulte:
 
+**[Projeto Nexus — Repositório original](https://github.com/MatheusPinto/Project_Nexus)**
 
-### Definições das Linguagens e arquivos utilizadas.
-
-`HTML` : Responsavel por criar a estrutura do website, quando o navegador recebe o código HTML ele cria uma arvore de documentos/objetos).<br>
-`CSS` : Formata a configuração padrão de objetos HTML.<br>
-`javascript` : Linguagem de responsavel pelo tornar o website responsive, desde alterar icones/css até realizar requisições htttp. <br>
-`PHP` : linguagem de server-side, utilizadas pelos servidores. Suporta HTML e Javascript em seu arquivo. Todo código php fica invisivel ao usuario, diferente do html e javascript<br>
-`MySQL` : Estrura semantica lida por banco de dados para realizar diversas ações no mesmo.<br>
-
-## 4  Configuração Node-Red
-
-Para que Node-RED responda as requisições foi criado funções em paralelo com o código do Node-RED central para extrair dados do fluxo de comunicação e salva-las em um objeto armazenado no contexto do próprio Node-RED (`contextStorage`) no computador que está o executando. O escopo flow permite que os nós pertencentes ao mesmo fluxo compartilhem o valor. O estado do objeto consolidado é armazenado no contexto flow do Node-RED mantido na memória RAM. Quando o Node-RED é fechado ou reiniciado, o conteúdo desaparece. O `contextStorage` é uma configuração do arquivo settings.js que permite mudar esse comportamento. Mas é possivel configurar o Node-RED para mudar o comportamento do `contextStorage`  no `setting.js`
-
-### Função principal Requisição GET `/api/state`
-
-<table>
-  <tr>
-    <td>
-      <pre><code class="language-js">
-      Return current object state on http request
-      </code></pre>
-      
-          const defaultState = {
-            deviceID: "NEXUS Central Node V2",
-        
-            PROFINET: {
-                online: true,
-                frequencia: 0,
-                estado: false,
-                habilitar: false,
-                resetar: false
-            },
-            CAN: {
-                online: true,
-                velocidade: 0,
-                marcha: 0,
-                erro: 0
-            },
-            MQTT: {
-                online: true,
-                temperatura: "---",
-                estado: "---"
-            }
-        };
-      
-        const saved = flow.get("protocolState") || {};
-        const response = {
-            deviceID: saved.deviceID || defaultState.deviceID,
-            PROFINET: {
-                ...defaultState.PROFINET,
-                ...(saved.PROFINET || {})
-            },
-            CAN: {
-                ...defaultState.CAN,
-                ...(saved.CAN || {})
-            },
-            MQTT: {
-                ...defaultState.MQTT,
-                ...(saved.MQTT || {})
-            }
-        };
-        
-        msg.headers = {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "https://curricularium.infinityfreeapp.com"
-        };
-        
-        msg.payload = JSON.stringify(response);        
-        return msg;
-        
-  </td>
-  </tr>
-</table>
-<p align="center"> <img src="figs/api_state.png" alt="GET api/state" width="100%"></p>
-<br><br>
-
-### set PROFINET state
-<table>
-  <tr>
-    <td>
-      <pre><code class="language-js">
-      Save PROFINET state object        
-      </code></pre>
-      
-        const protocolState = flow.get("protocolState") || {};
-
-        protocolState.PROFINET = {
-            ...(protocolState.PROFINET || {}),
-            online: true,
-            frequencia: Number(msg.payload ?? 0)
-        };      
-        flow.set("protocolState", protocolState);      
-        return msg;         
-  </tr>
-</table>
-<p align="center"> <img src="figs/set_profinet.png" alt="GET api/state" width="100%"></p>
-<br><br>
-
-### set CAN state
-<table>
-  <tr>
-    <td>
-      <pre><code class="language-js">
-      Save CAN state object
-      </code></pre>
-      
-        let body = msg.payload;
-
-        if (typeof body === "string") {
-            try {
-                body = JSON.parse(body);
-            } catch (err) {
-                node.warn("Invalid CAN JSON");
-                return msg;
-            }
-        }
-        
-        const can = body.adc && typeof body.adc === "object"
-            ? body.adc
-            : body;
-        
-        const protocolState = flow.get("protocolState") || {};
-        
-        protocolState.CAN = {
-            online: true,
-            velocidade: Number(can.velocidade ?? can.velocity ?? protocolState.CAN?.velocidade ?? 0),
-            marcha:     Number(can.marcha ?? can.gear ?? protocolState.CAN?.marcha ?? 0),
-            erro:       Number(can.erro ?? can.error ?? protocolState.CAN?.erro ?? 0)
-        };
-        
-        flow.set("protocolState", protocolState);        
-        return msg;
-         
-  </tr>
-</table>
-<p align="center"> <img src="figs/set_can.png" alt="GET api/state" width="100%"></p>
-<br><br>
-
-### set MQTT state temperatura
-<table>
-  <tr>
-    <td>
-      <pre><code class="language-js">
-      Save MQTT state object
-      </code></pre>
-      
-        const protocolState = flow.get("protocolState") || {};
-
-        protocolState.MQTT = {
-            ...(protocolState.MQTT || {}),
-            online: true,
-            temperatura: Number(msg.payload)
-        };
-        
-        flow.set("protocolState", protocolState);        
-        return msg;        
-  </tr>
-</table>
-
-### set MQTT state estado
-<table>
-  <tr>
-    <td>
-      <pre><code class="language-js">
-      Save PROFINET state object
-      </code></pre>
-      
-        const protocolState = flow.get("protocolState") || {};
-
-        protocolState.MQTT = {
-            ...(protocolState.MQTT || {}),
-            online: true,
-            estado: String(msg.payload)
-        };
-        
-        flow.set("protocolState", protocolState);
-        return msg;      
-  </tr>
-</table>
-<p align="center"> <img src="figs/set_mqtt.png" alt="GET api/state" width="100%"></p>
-<br><br>
-
-### objeto JSON esperado no Website
-<table>
-  <tr>
-    <td>
-      <pre><code class="language-js">
-      JSON object
-      </code></pre>
-      
-      {
-        "deviceID": "Nexus_Hub",
-        "PROFINET": {
-          "online": true,
-          "estado": false,
-          "habilitar": false,
-          "resetar": false,
-          "frequencia": 0
-        },
-        "CAN": {
-          "online": true,
-          "velocidade": 0,
-          "marcha": 0,
-          "erro": 0
-        },
-        "MQTT": {
-          "online": true,
-          "temperatura": "---",
-          "estado": "---"
-        }
-      }       
-  </tr>
-</table>
-
-### Politica de segurança do browser
-
-A CORS (Cross Origin Resource Sharing) é um mecanismo de segurança do browser que bloqueia código Javascript de frontend de ler respostas de diferentes origens a não ser que seja explicitamente habilitado pelo servidor. Dependendo do computador e de sua configuração a falta desta explicidade pode gerar um bloqueio, e consequente erro, impossibilitando a comunicação entre o Website e o Node-RED. Portanto, dentro do parametro `origin` do objeto `httpNodeCors` no arquivo setting.js do Node-RED, presente no diretorio `(usuario)/.node-red` do seu computador, o desenvolvedor deve colocar o endereço completo do website que irá utilizar, protocolo (HTTP/HTTPS) + dominio. Note que mesmo que o website que realiza o upload e acessa o localhost possui o diretório `/upload`, ele não entra como endereço, apenas o endereço absoluto.
-
-<table>
-  <tr>
-    <td>
-      <pre><code class="language-js">
-        CORs policy Node-RED setting.js configuration
-      </code></pre>
-      
-      httpNodeCors: {
-          origin: "https://curricularium.infinityfreeapp.com",
-          methods: "GET,POST,OPTIONS",
-          allowedHeaders: ["Content-Type"]
-      }
-        
-  </tr>
-</table>
-
-
-
-
+A documentação específica da primeira versão do website também está disponível na seção [`nexus-web`](https://github.com/MatheusPinto/Project_Nexus/tree/main/nexus-web).
