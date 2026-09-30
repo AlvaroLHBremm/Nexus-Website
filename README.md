@@ -7,7 +7,7 @@
     <img src="https://skillicons.dev/icons?i=html,css,js,php,mysql" height="50px"/>
 </div><br>
 
-Este repositório contém a **continuação e evolução pessoal do website desenvolvido para o Projeto Nexus**, originalmente criado durante a disciplina de `Comunicação de Dados` do curso de Eletrônica Industrial.
+Este repositório contém a **continuação e evolução pessoal do website desenvolvido para o Projeto [Nexus](https://github.com/MatheusPinto/Project_Nexus/tree/main/nexus-web)**, originalmente criado durante a disciplina de `Comunicação de Dados` do curso de Eletrônica Industrial.
 
 O Projeto Nexus consiste em um sistema de automação distribuído composto por três células utilizando diferentes protocolos de comunicação: **PROFINET, CAN e MQTT**. O website foi desenvolvido como uma interface externa para monitoramento dos dados do sistema através da internet.
 
