@@ -22,12 +22,15 @@ Entre as funcionalidades posteriormente desenvolvidas estão:
 - monitoramento dos estados dos protocolos PROFINET, CAN e MQTT;
 - Identificação da disponibilidade dos protocolos através do último dado recebido;
 - Atualização periódica das informações apresentadas no dashboard;
+- Interface adaptada para computadores e dispositivos móveis;
+- Integração entre frontend, PHP, MySQL e Node-RED.
+
+Novas Funcionalidades:
+
 - Gráficos em tempo real desenvolvidos diretamente com a API `<canvas>` do HTML;
 - Ajuste automático da escala dos gráficos de acordo com os valores recebidos;
 - Armazenamento de um histórico limitado de amostras para visualização;
 - Suporte a valores positivos, negativos e diferentes ordens de grandeza;
-- Interface adaptada para computadores e dispositivos móveis;
-- Integração entre frontend, PHP, MySQL e Node-RED.
 
 <p align="center">
   <img src="figs/websiteV2.png" alt="Dashboard Nexus" width="100%">
