@@ -3,10 +3,10 @@
 ![Frontend](https://img.shields.io/badge/Frontend-HTML%20%7C%20CSS%20%7C%20JavaScript-orange)
 ![Backend](https://img.shields.io/badge/Backend-PHP%20%7C%20MySQL-purple)
 
-Website: [Clique aqui!](https://curricularium.infinityfreeapp.com)
 <div style="padding: 0;">
     <img src="https://skillicons.dev/icons?i=html,css,js,php,mysql" height="50px"/>
 </div><br>
+Website: [Clique aqui!](https://curricularium.infinityfreeapp.com)
 
 Este repositório contém a **continuação e evolução pessoal do website desenvolvido para o Projeto [Nexus](https://github.com/MatheusPinto/Project_Nexus/tree/main/nexus-web)**, originalmente criado para o projeto final da disciplina de `Comunicação de Dados` e ultimo semestre do curso de Eletrônica Industrial.
 
