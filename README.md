@@ -3,7 +3,7 @@
 ![Frontend](https://img.shields.io/badge/Frontend-HTML%20%7C%20CSS%20%7C%20JavaScript-orange)
 ![Backend](https://img.shields.io/badge/Backend-PHP%20%7C%20MySQL-purple)
 
-[Website](https://curricularium.infinityfreeapp.com)
+Website: [Clique aqui!](https://curricularium.infinityfreeapp.com)
 <div style="padding: 0;">
     <img src="https://skillicons.dev/icons?i=html,css,js,php,mysql" height="50px"/>
 </div><br>
